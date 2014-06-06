@@ -56,7 +56,7 @@ test_that("makeCacheMatrix: This function creates a special 'matrix'
                           q2$getinverse()},
                           equals(
                                   matrix(c(0.2,-0.2,0.2,0.2,0.3,-0.3,0,1,0),ncol=3,nrow=3)))
-                  })
+          })
 
 ## "cacheSolve: This function computes the inverse of the special
 ## 'matrix' returned by makeCacheMatrix above. If the inverse has already
