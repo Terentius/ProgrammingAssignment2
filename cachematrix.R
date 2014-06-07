@@ -56,6 +56,7 @@ test_that("makeCacheMatrix: This function creates a special 'matrix'
                           q2$getinverse()},
                           equals(
                                   matrix(c(0.2,-0.2,0.2,0.2,0.3,-0.3,0,1,0),ncol=3,nrow=3)))
+                  
           })
 
 ## "cacheSolve: This function computes the inverse of the special
@@ -85,4 +86,12 @@ should retrieve the inverse from the cache.",{
                 cacheSolve(q1)},
                 equals({
                         matrix(c(0.2,-0.2,0.2,0.2,0.3,-0.3,0,1,0),ncol=3,nrow=3)}))
+        expect_that({
+                q1 <- makeCacheMatrix()
+                q1$set(matrix(c(3,2,0,0,0,1,2,-2,1),ncol=3,nrow=3))
+                cacheSolve(q1)
+                q1$set(matrix(c(2,1,3,2),ncol=2,nrow=2))
+                cacheSolve(q1)},
+                equals({
+                        matrix(c(2,-1,-3,2),ncol=2,nrow=2)}))
 })
